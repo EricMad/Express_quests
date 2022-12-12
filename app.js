@@ -14,8 +14,6 @@ app.get("/", welcome);
 const movieHandlers = require("./movieHandlers");
 const { validateMovie, validateUser } = require("./validators.js");
 
-
-
 app.get("/api/movies", validateMovie, movieHandlers.getMovies);
 app.get("/api/users", validateUser, movieHandlers.getUsers);
 app.get("/api/movies/:id", validateMovie, movieHandlers.getMovieById);
@@ -34,3 +32,5 @@ app.listen(port, (err) => {
     console.log(`Server is listening on ${port}`);
   }
 });
+app.delete("/api/movies/:id", movieHandlers.deleteMovie);
+app.delete("/api/users/:id", movieHandlers.deleteUser);
